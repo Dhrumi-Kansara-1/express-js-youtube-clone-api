@@ -1,0 +1,17 @@
+{
+  "name": "express-learn",
+  "version": "1.0.0",
+  "description": "Youtube clone",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": ["Javascript","Backend","Youtube clone"],
+  "author": "Dhrumi Kansara",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.4",
+    "express": "^4.18.2"
+  }
+}
