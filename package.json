@@ -3,15 +3,22 @@
   "version": "1.0.0",
   "description": "Youtube clone",
   "main": "index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "dev": "nodemon src/index.js"
   },
-  "keywords": ["Javascript","Backend","Youtube clone"],
+  "keywords": [
+    "Javascript",
+    "Backend",
+    "Youtube clone"
+  ],
   "author": "Dhrumi Kansara",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.4",
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
   }
 }
