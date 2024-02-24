@@ -1,11 +1,14 @@
-require("dotenv").config()
-const express=require("express")
+import dotenv from "dotenv"
+import { connectDB } from "./db/index.js"
+import { app } from "./app.js"
 
-const app=express()
+dotenv.config()
 
-
-const PORT=process.env.PORT || 4000 
-
-app.listen(PORT,console.log(`server started on port ${PORT}`))
-
-console.log("hello")
+connectDB()
+  .then(() => {
+    const PORT = process.env.PORT || 4000 
+    app.listen(PORT, console.log(`Server started on PORT: ${PORT}`))
+  })
+  .catch((error) => {
+    console.log("MongoDB connection failed!", error)
+  })
