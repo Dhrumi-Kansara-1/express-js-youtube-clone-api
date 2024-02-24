@@ -1,3 +1,4 @@
+// resuable try catch handler
 const asyncHandler = (requestHandler) => async (req, res, next) => {
   try {
     await requestHandler(req, res, next)
@@ -5,7 +6,7 @@ const asyncHandler = (requestHandler) => async (req, res, next) => {
     console.log(error)
     res.status(500).json({ success: false, message: error.message })
   }
-} 
+}
 
 export { asyncHandler }
 
@@ -14,4 +15,3 @@ export { asyncHandler }
 //     Promise.resolve(requestHandler(req, res, next)).catch((err) => next(err))
 //   }
 // }
-
