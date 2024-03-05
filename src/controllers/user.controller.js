@@ -29,11 +29,28 @@ const registerUser = asyncHandler(async (req, res, next) => {
     throw new ApiError(409, "Email or Username already exist")
   }
 
-  //4.1 get avatar and cover image
-  const avatarLocalPath = req.files?.avatar[0]?.path
-  const coverImageLocalPath = req.files?.coverImage[0]?.path
-  // console.log("avatarLocalPath:", avatarLocalPath)
-  // console.log("coverImageLocalPath:", coverImageLocalPath)
+  //4.1.1 initialize converImage and avatar
+
+  let coverImageLocalPath
+  let avatarLocalPath
+
+  //4.1.1 only get coverImage --> if exist req.file and req.file.coverImage
+  if (
+    req.files &&
+    Array.isArray(req.files.coverImage) &&
+    req.files.converImage.length > 0
+  ) {
+    coverImageLocalPath = req.files?.coverImage[0]?.path
+  }
+
+  //4.1.2 only get avatar --> if exist req.file and req.file.avatar=
+  if (
+    req.files &&
+    Array.isArray(req.files.avatar) &&
+    req.files.avatar.length > 0
+  ) {
+    avatarLocalPath = req.files?.avatar[0]?.path
+  }
 
   //4.2 check if avatar exist
   if (!avatarLocalPath) {
@@ -48,8 +65,6 @@ const registerUser = asyncHandler(async (req, res, next) => {
     localFilePath: coverImageLocalPath,
   })
 
-  // console.log("avatarCloudinary:", avatarCloudinary)
-  
   //6. check if avatar is uploaded on cloudinary
   if (!avatarCloudinary) {
     throw new ApiError(400, "Avatar is not uploaded")
@@ -82,10 +97,7 @@ const registerUser = asyncHandler(async (req, res, next) => {
   //9. return response
   return res
     .status(201)
-    .json(ApiResponse(201, createdUser, "User registered successfully"))
+    .json(new ApiResponse(201, createdUser, "User registered successfully"))
 })
 
-
-
- 
 export { registerUser }
