@@ -3,9 +3,7 @@ function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   return emailRegex.test(email)
 }
-
-console.log("validation.js - process.env:", process.env.CLOUDINARY_CLOUD_NAME)
-
+ 
 export {
   isValidEmail,
 }

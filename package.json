@@ -2,10 +2,10 @@
   "name": "express-learn",
   "version": "1.0.0",
   "description": "Youtube clone",
-  "main": "src/index.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon -r dotenv/config  src/index.js"
   },
   "keywords": [
     "Javascript",
